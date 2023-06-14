@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import {LoginPage} from './pages/Login/LoginPage'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <h1>Ola, mundo</h1>
+      <LoginPage />
     </>
   )
 }
