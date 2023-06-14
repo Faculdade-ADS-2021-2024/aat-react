@@ -1,12 +1,10 @@
-import { useState } from 'react'
-import {LoginPage} from './pages/Login/LoginPage'
+import { AppRoutes } from "./AppRoutes"
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <LoginPage />
+      <AppRoutes />
     </>
   )
 }

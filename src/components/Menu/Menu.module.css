@@ -1,0 +1,61 @@
+.menu {
+    height: 100vh;
+    width: 7rem;
+    background-color: #f47b34;
+}
+
+.logo {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+}
+
+.options {
+    height: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item {
+    height: calc(100% - 75px);
+}
+
+.logout {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-option {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.logout button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+}
+
+.logout button svg {
+    color: #fff;
+}
