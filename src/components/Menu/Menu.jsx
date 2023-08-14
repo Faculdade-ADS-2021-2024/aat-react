@@ -41,7 +41,7 @@ export function Menu() {
                     </Link>
                 </div>
                 <div className={style.logout}>
-                    <button title="Sair" onClick={handleLogout}><icon.ArrowFatLineLeft size={32} /> Sair</button>
+                    <button title="Sair" onClick={handleLogout}><icon.SignOut size={32} /> Sair</button>
                 </div>
             </div>
         </div>

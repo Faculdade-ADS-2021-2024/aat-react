@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import { categoriaService } from '../../service/categoriaService';
+import { Link } from 'react-router-dom';
+
+import { categoriaService, deleteCategoria } from '../../service/categoriaService';
 import style from './CategoriaPage.module.css';
 
+import * as icon from "@phosphor-icons/react";
 
 export function CategoriaPage() {
 
-    const [categoria, setCategoria] = useState();
+    const [categorias, setCategorias] = useState([]);
 
     useState(() => {
         getCategoria();
@@ -13,15 +16,20 @@ export function CategoriaPage() {
 
     async function getCategoria() {
         const response = await categoriaService();
-        setCategoria(response.data);
+        setCategorias(response.data);
         console.log(response.data);
     }
+
+    async function DeleteCategoria(id) {
+        await deleteCategoria(id);
+        getCategoria();
+    } 
 
     return (
         <div className={style.categoria}>
             <header className={style.header}>
                 <h1 className={style.titulo}>Categoria</h1>
-                <button className={style.btnNew}>Novo</button>
+                <Link to="/novacategoia" className={style.btnNew}>Novo</Link>
             </header>
             <div className={style.container}>
                 <table>
@@ -33,11 +41,18 @@ export function CategoriaPage() {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* { 
-                            categoria.map((cat, index) => {
-                                <th>{cat.nome}</th>
-                            })
-                        } */}
+                        {
+                            categorias.map((categoria, index) => (
+                                <tr key={index}>
+                                    <th>{categoria.Nome}</th>
+                                    <th>{categoria.Descricao}</th>
+                                    <th>
+                                        <Link to={`/categoria/${categoria.Id}`} className={style.acoes}><icon.Pencil size={28} /></Link>
+                                        <button className={style.acoes} onClick={() => DeleteCategoria(categoria.Id)}><icon.Trash size={28} /></button>
+                                    </th>
+                                </tr>
+                            ))
+                        }
                     </tbody>
                 </table>
             </div>

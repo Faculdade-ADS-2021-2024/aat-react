@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
         const recoveredUser = sessionStorage.getItem('token');
 
         if(recoveredUser) {
+            api.defaults.headers.Authorization = `Bearer ${recoveredUser}`;
             setUser(recoveredUser);
         }
 
@@ -27,8 +28,6 @@ export const AuthProvider = ({ children }) => {
     async function logar(login, senha) {
 
         const response = await createSession(login, senha);
-
-        console.log("login", response.data);
 
         const loggedUser = response.data;
 
@@ -41,7 +40,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     function logout() {
-        console.log('Logout');
         sessionStorage.removeItem('token');
         api.defaults.headers.Authorization = null;
         setUser(null);

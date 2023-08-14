@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import { Menu } from '../../components/Menu/Menu';
 import { AuthProvider, AuthContext } from '../../contexts/auth';
@@ -7,6 +7,9 @@ import { AuthProvider, AuthContext } from '../../contexts/auth';
 import style from './Home.module.css';
 
 import { CategoriaPage } from '../Categoria/CategoriaPage';
+import { NovaCategoriaPage } from '../Categoria/NovaCategogiaPage';
+import { ProdutoPage } from '../Produto/ProdutoPage';
+import { NovoProdutoPage } from '../Produto/NovoProdutoPage';
 
 
 export function Home() {
@@ -31,6 +34,12 @@ export function Home() {
                 <Menu />
                 <Routes>
                     <Route exact path="/categoria" element={<Private><CategoriaPage /></Private>} />
+                    <Route exact path="/categoria/:id" element={<Private><NovaCategoriaPage /></Private>} />
+                    <Route exact path="/novacategoia" element={<Private><NovaCategoriaPage /></Private>} />
+
+                    <Route exact path="/produto" element={<Private><ProdutoPage /></Private>} />
+                    <Route exact path="/produto/:id" element={<Private><NovoProdutoPage /></Private>} />
+                    <Route exact path="/novoproduto" element={<Private><NovoProdutoPage /></Private>} />
                 </Routes>
             </AuthProvider>
         </div>
